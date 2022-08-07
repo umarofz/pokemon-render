@@ -78,6 +78,7 @@ function renderCategories(array, wrapper) {
 }
 renderCategories(pokemonsCategories.sort(), elCategories)
 
+
 elForm.addEventListener("submit", function(evt) {
     evt.preventDefault()
 
