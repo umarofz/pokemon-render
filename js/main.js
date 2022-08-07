@@ -6,7 +6,6 @@ let elHeightInput = document.querySelector(".height__input")
 let elCategories = document.querySelector(".categories")      
 
 
-
 let normolizedArray = pokemonsSliced.map(item => {
     return {
         name: item.name,
@@ -38,10 +37,10 @@ function pokemonsItems(pokemons) {
         p1.textContent = item.type
         newLi.appendChild(p1)
         let p2 = document.createElement("h5")
-        p2.textContent = item.weight
+        p2.textContent = `${item.weight} kg`
         newLi.appendChild(p2)
         let p3 = document.createElement("h5")
-        p3.textContent = item.height
+        p3.textContent = `${item.height} m`
         newLi.appendChild(p3)
     }
 }
@@ -88,7 +87,8 @@ elForm.addEventListener("submit", function(evt) {
 
     let filteredArray = normolizedArray.filter(function (item) {
         let isTrue = categories == "all" ? true: item.type.includes(categories)
-        let validation = item.height >= inputHeight && isTrue;
+        let validation = item.height >= Number(inputHeight) && item.weight >= Number(inputWeight) && isTrue;
+        console.log(validation);
 
         return validation
     })
