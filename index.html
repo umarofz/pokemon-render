@@ -12,22 +12,50 @@
   <div class="text-center">
     <img src="./img/pokemon_logo.png" alt="" width="600" height="250">
   </div>
-
+  
   <div class="container d-flex">
     <form class="form me-5 mt-5" action="https://echo.htmlacademy.ru/">
       <input class="form-control mb-3 weight__input" type="number" placeholder="weight" style="width: 250px;" step="0.01">
       <input class="form-control mb-3 height__input" type="number" placeholder="height" style="width: 250px;" step="0.01">
-
+      
       <select class="form-select mb-3 categories" id="" style="width: 250px;">
         <option value="all">All</option>
       </select>
-
-      <button class="btn btn-primary w-100">Submit</button>
+      
+      <button class="btn btn-primary mb-4" style="width: 250px;">Submit</button>
+      
+      <h2 class="mb-3">Bookmarked pokemons</h2>
+      <ul class="list-unstyled bookmark__list">
+        
+      </ul>
     </form>
+    
     <ul class="list1 d-flex flex-wrap list-unstyled mx-auto mt-5">
       
     </ul>
   </div>
+  
+  
+  <template id="pokemon__temp">
+    <li class="card col-3 text-center mb-4 boxshadow me-3 hover" style="height: 360px; width: 300px;">
+      <img class="mx-auto pokemon__img" src="http://www.serebii.net/pokemongo/pokemon/001.png" alt="" width="200">
+      <h3 class="m-0 pokemon__title">Bulbasaur</h3>
+      <p class="m-0 pokemon__type">Grass, Poison</p>
+      <p class="m-0 pokemon__weight">6.9</p>
+      <p class="m-0 mb-2 pokemon__height">0.71</p>
+      <button class="w-50 mx-auto border-danger rounded-1 text-bg-danger bookmark__btn">Bookmark</button>
+    </li>
+  </template>
+  
+  <template id="pokemon__template">
+    <li class="bookmark__item col-4">
+      <div class="border p-3 bookmark__wrapper" style="width: 250px;">
+        <h4 class="mx-1 mb-2 bookmark__title">Pokemon</h4>
+        
+        <button class="btn bg-danger text-white rounded-1 pe-2 ps-2 mx-1 bookmark__btn__remove">Remove</button>
+      </div>
+    </li>
+  </template>
   <script src="./js/bootstrap.js"></script>
   <script src="./js/pokemon.js"></script>
   <script src="./js/main.js"></script>

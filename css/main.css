@@ -2,7 +2,7 @@
     box-shadow: 0 -5px 8px #888888;
 }
 
-li:hover {
+.hover:hover {
     transform: scale(1.1);
     transition: all 0.5s ease;
     z-index: 100;
