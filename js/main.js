@@ -8,7 +8,11 @@ let elSelectCategories = document.querySelector(".categories");
 let elBookmarkList = document.querySelector(".bookmark__list");
 
 let pokemonArray = pokemons.slice(0, 30);
-let bookmarkedPokemons = [];
+// let bookmarkedPokemons = [];
+let localPokemons = JSON.parse(localStorage.getItem("bookmarkedPokemons"))
+
+let bookmarkedPokemons = localPokemons ? localPokemons : []
+renderBookmarks(bookmarkedPokemons)
 
 let normolizedArray = pokemonArray.map(function(item) {
     return {
@@ -101,6 +105,7 @@ elPokemonWrapper.addEventListener("click", function(evt) {
         
         if (bookmarkedPokemons.length == 0) {
             bookmarkedPokemons.unshift(foundMovie)
+            localStorage.setItem("bookmarkedPokemons", JSON.stringify(bookmarkedPokemons))
         }else{
             let isMovieInArray = bookmarkedPokemons.find(function(item) {
                 return item.name == foundMovie.name
@@ -108,6 +113,7 @@ elPokemonWrapper.addEventListener("click", function(evt) {
             
             if (!isMovieInArray) {
                 bookmarkedPokemons.unshift(foundMovie)
+                localStorage.setItem("bookmarkedPokemons", JSON.stringify(bookmarkedPokemons))
             }
         }
         renderBookmarks(bookmarkedPokemons)
@@ -140,6 +146,7 @@ elBookmarkList.addEventListener("click", function(evt) {
         })
         
         bookmarkedPokemons.splice(foundBookmarkedMovie, 1);
+        localStorage.setItem("bookmarkedPokemons", JSON.stringify(bookmarkedPokemons))
     }
     renderBookmarks(bookmarkedPokemons);
 })
