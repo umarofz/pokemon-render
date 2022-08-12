@@ -7,12 +7,12 @@ let elHeightInput = document.querySelector(".height__input");
 let elSelectCategories = document.querySelector(".categories");
 let elBookmarkList = document.querySelector(".bookmark__list");
 
-let pokemonArray = pokemons.slice(0, 30);
-// let bookmarkedPokemons = [];
-let localPokemons = JSON.parse(localStorage.getItem("bookmarkedPokemons"))
 
+let pokemonArray = pokemons.slice(0, 30);
+let localPokemons = JSON.parse(localStorage.getItem("bookmarkedPokemons"))
 let bookmarkedPokemons = localPokemons ? localPokemons : []
 renderBookmarks(bookmarkedPokemons)
+
 
 let normolizedArray = pokemonArray.map(function(item) {
     return {
@@ -24,6 +24,7 @@ let normolizedArray = pokemonArray.map(function(item) {
         weight: item.weight
     }
 })
+
 
 function getCategories(array) {
     let categoriesArray = [];
@@ -53,8 +54,8 @@ function renderCategories(array, wrapper) {
 
     wrapper.appendChild(tempFragment)
 }
-
 renderCategories(pokemonCategories.sort(), elSelectCategories)
+
 
 function renderPokemons(array) {
     elPokemonWrapper.innerHTML = null
@@ -65,8 +66,8 @@ function renderPokemons(array) {
         templateItem.querySelector(".pokemon__img").src = item.img;
         templateItem.querySelector(".pokemon__title").textContent = item.name;
         templateItem.querySelector(".pokemon__type").textContent = item.type;
-        templateItem.querySelector(".pokemon__weight").textContent = item.weight;
-        templateItem.querySelector(".pokemon__height").textContent = item.height;
+        templateItem.querySelector(".pokemon__weight").textContent = item.weight + " kg";
+        templateItem.querySelector(".pokemon__height").textContent = item.height + " m";
         templateItem.querySelector(".bookmark__btn").dataset.bookmarkId = item.id;
 
         tempFragment.appendChild(templateItem)
@@ -74,8 +75,8 @@ function renderPokemons(array) {
 
     elPokemonWrapper.appendChild(tempFragment)
 }
-
 renderPokemons(normolizedArray)
+
 
 elForm.addEventListener("submit", function(evt) {
     evt.preventDefault()
@@ -94,6 +95,7 @@ elForm.addEventListener("submit", function(evt) {
 
     renderPokemons(filteredPokemons)
 })
+
 
 elPokemonWrapper.addEventListener("click", function(evt) {
     let currentBookmarkId = evt.target.dataset.bookmarkId;
@@ -119,6 +121,7 @@ elPokemonWrapper.addEventListener("click", function(evt) {
         renderBookmarks(bookmarkedPokemons)
     }
 })
+
 
 function renderBookmarks(arrayOfMovies) {
     elBookmarkList.innerHTML = null;
